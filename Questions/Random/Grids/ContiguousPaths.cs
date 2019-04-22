@@ -25,6 +25,8 @@ namespace Grids
             PrintGrid(title: "After");
             Console.WriteLine("Positions visited");
             Console.WriteLine(string.Join(Environment.NewLine, positions));
+
+            Assert.Inconclusive("Test has no valuable asserts.");
         }
 
         private void PrintGrid(string title)

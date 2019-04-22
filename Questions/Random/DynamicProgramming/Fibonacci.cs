@@ -12,17 +12,17 @@
 
         [DataTestMethod]
         [DynamicData(nameof(TestData))]
-        public void RecursiveNaiveTest(int n, ulong expected)
+        public void RecursiveNaive(int n, ulong expected)
         {
-            Assert.AreEqual(expected, RecursiveNaive(n));
+            Assert.AreEqual(expected, RecursiveNaiveImpl(n));
         }
 
-        private static ulong RecursiveNaive(int n)
+        private static ulong RecursiveNaiveImpl(int n)
         {
             if (n == 0 || n == 1)
                 return (ulong)n;
 
-            return RecursiveNaive(n-2) + RecursiveNaive(n-1);
+            return RecursiveNaiveImpl(n-2) + RecursiveNaiveImpl(n-1);
         }
 
         #endregion
@@ -31,12 +31,12 @@
 
         [DataTestMethod]
         [DynamicData(nameof(TestData))]
-        public void RecursiveMemoizedTest(int n, ulong expected)
+        public void RecursiveMemoized(int n, ulong expected)
         {
-            Assert.AreEqual(expected, RecursiveMemoized(n, new Dictionary<int, ulong>(n)));
+            Assert.AreEqual(expected, RecursiveMemoizedImpl(n, new Dictionary<int, ulong>(n)));
         }
 
-        private static ulong RecursiveMemoized(int n, Dictionary<int, ulong> cache)
+        private static ulong RecursiveMemoizedImpl(int n, Dictionary<int, ulong> cache)
         {
             if (n == 0 || n == 1)
                 return (ulong)n;
@@ -46,7 +46,7 @@
 
 
             Console.WriteLine($"Calculating f({n})");
-            value = RecursiveMemoized(n-2, cache) + RecursiveMemoized(n-1, cache);
+            value = RecursiveMemoizedImpl(n-2, cache) + RecursiveMemoizedImpl(n-1, cache);
             cache[n] = value;
             return value;
         }
@@ -83,17 +83,15 @@
 
         #endregion
 
-        private static IEnumerable<object[]> TestData
-        {
-            get
+        private static IEnumerable<object[]> TestData =>
+            new[]
             {
-                yield return new object[] {0, 0UL};
-                yield return new object[] {1, 1UL};
-                yield return new object[] {2, 1UL};
-                yield return new object[] {7, 13UL};
-                yield return new object[] {10, 55UL};
-                yield return new object[] {30, 832040UL};
-            }
-        }
+                new object[] {0, 0UL},
+                new object[] {1, 1UL},
+                new object[] {2, 1UL},
+                new object[] {7, 13UL},
+                new object[] {10, 55UL},
+                new object[] {30, 832040UL}
+            };
     }
 }
