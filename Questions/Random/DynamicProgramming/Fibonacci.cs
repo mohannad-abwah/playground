@@ -59,8 +59,6 @@
         [DynamicData(nameof(TestData))]
         public void Iterative(int n, ulong expected)
         {
-            ulong fn_2 = 0;
-            ulong fn_1 = 1;
             ulong fn = 1;
 
             if (n == 0 || n == 1)
@@ -69,6 +67,9 @@
             }
             else
             {
+                ulong fn_2 = 0;
+                ulong fn_1 = 1;
+
                 for (int i = 2; i < n; i++)
                 {
                     fn_2 = fn_1;
