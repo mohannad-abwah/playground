@@ -1,0 +1,30 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrackingTheCodingInterview", "CrackingTheCodingInterview\CrackingTheCodingInterview.csproj", "{94E6D175-83A4-40D4-83E4-14CA35ECD8AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Random", "Random\Random.csproj", "{640CABA9-B235-4436-AF1F-7B17A538809E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94E6D175-83A4-40D4-83E4-14CA35ECD8AC}.Debug|x64.ActiveCfg = Debug|x64
+		{94E6D175-83A4-40D4-83E4-14CA35ECD8AC}.Debug|x64.Build.0 = Debug|x64
+		{94E6D175-83A4-40D4-83E4-14CA35ECD8AC}.Release|x64.ActiveCfg = Release|x64
+		{94E6D175-83A4-40D4-83E4-14CA35ECD8AC}.Release|x64.Build.0 = Release|x64
+		{640CABA9-B235-4436-AF1F-7B17A538809E}.Debug|x64.ActiveCfg = Debug|x64
+		{640CABA9-B235-4436-AF1F-7B17A538809E}.Debug|x64.Build.0 = Debug|x64
+		{640CABA9-B235-4436-AF1F-7B17A538809E}.Release|x64.ActiveCfg = Release|x64
+		{640CABA9-B235-4436-AF1F-7B17A538809E}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D6604802-37EC-42AF-BCDB-38F6B891DF02}
+	EndGlobalSection
+EndGlobal
