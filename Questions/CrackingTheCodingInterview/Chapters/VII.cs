@@ -1,4 +1,4 @@
-namespace CrackingTheCodingInterview.Chapters
+namespace Chapters
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;

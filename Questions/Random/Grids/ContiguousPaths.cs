@@ -1,4 +1,4 @@
-namespace Random.Grids
+namespace Grids
 {
     using System;
     using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿namespace Random.DynamicProgramming
+﻿namespace DynamicProgramming
 {
     using System;
     using System.Collections.Generic;
