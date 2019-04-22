@@ -38,5 +38,53 @@ namespace CrackingTheCodingInterview.Chapters
             
             Assert.AreEqual(expected, set.Count);
         }
+
+        [DataTestMethod]
+        [DataRow("cbabadcbbabbcbabaabccbabc", "abbc", new[]{0, 6, 9, 11, 12, 20, 21}, DisplayName = "Sample from book")]
+        [DataRow("abbc", "abbc", new[]{0}, DisplayName = "Identical")]
+        [DataRow("cbba", "abbc", new[]{0}, DisplayName = "Identical but reversed")]
+        [DataRow("bbbbbbb", "bb", new[]{0, 1, 2, 3, 4, 5}, DisplayName = "Repeating character")]
+        [DataRow("abbabbc", "abbc", new[]{3}, DisplayName = "Psych!")]
+        [DataRow("agdsfsiahfi", "abbc", new int[]{}, DisplayName = "Not found")]
+        public void FindAllPermutationsOfSmallStringInBigString(string big, string small, int[] expectedPositions)
+        {
+            var positions = new List<int>();
+
+            var hist = new Dictionary<char, int>();
+            foreach (char c in small)
+            {
+                if (hist.TryGetValue(c, out int count))
+                    hist[c] = count + 1;
+                else
+                    hist[c] = 1;
+            }
+
+            var currentHist = new Dictionary<char, int>(hist);
+            var substringLength = 0;
+            for (int i = 0; i < big.Length; i++)
+            {
+                bool found = currentHist.TryGetValue(big[i], out int count);
+                if (found)
+                {
+                    substringLength++;
+                    if (count == 1)
+                        currentHist.Remove(big[i]);
+                    else
+                        currentHist[big[i]] = count - 1;
+                }
+
+                if (found && substringLength == small.Length)
+                    positions.Add(i - (substringLength-1));
+
+                if (!found)
+                {                   
+                    i -= substringLength; // TODO: It's more efficient to adjust instead of reset
+                    substringLength = 0;
+                    currentHist = new Dictionary<char, int>(hist);
+                }
+            }
+
+            CollectionAssert.AreEqual(expectedPositions, positions);
+        }
     }
 }
